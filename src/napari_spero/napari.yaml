@@ -1,0 +1,18 @@
+name: napari-spero
+display_name: Spero Reader
+# use 'hidden' to remove plugin from napari hub search results
+visibility: public
+# see https://napari.org/stable/plugins/manifest.html for valid categories
+categories: ["Annotation", "Segmentation", "Acquisition"]
+contributions:
+  commands:
+    - id: napari-spero.get_reader
+      python_name: napari_spero._reader:napari_get_reader
+      title: Open data with Spero Reader
+    - id: napari-spero.make_qwidget
+      python_name: napari_spero:ExampleQWidget
+      title: Make example QWidget
+  readers:
+    - command: napari-spero.get_reader
+      accepts_directories: false
+      filename_patterns: ['*.npy']
