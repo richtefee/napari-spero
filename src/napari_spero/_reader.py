@@ -146,5 +146,7 @@ def combine_mosaic(matlab_dict_set):
         for column in range(nr_columns):
             for row in range(nr_rows):
                 out[column * 480: (column + 1) * 480, row * 480: (row + 1) * 480] = image_data[image_order.pop()][::-1]
+        out = out[::-1]
 
-    return out.transpose(2, 0, 1)
+    out = out.transpose(2, 1, 0)
+    return out
