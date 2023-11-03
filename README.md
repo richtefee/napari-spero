@@ -1,12 +1,5 @@
 # napari-spero
 
-[![License BSD-3](https://img.shields.io/pypi/l/napari-spero.svg?color=green)](https://github.com/richtefee/napari-spero/raw/main/LICENSE)
-[![PyPI](https://img.shields.io/pypi/v/napari-spero.svg?color=green)](https://pypi.org/project/napari-spero)
-[![Python Version](https://img.shields.io/pypi/pyversions/napari-spero.svg?color=green)](https://python.org)
-[![tests](https://github.com/richtefee/napari-spero/workflows/tests/badge.svg)](https://github.com/richtefee/napari-spero/actions)
-[![codecov](https://codecov.io/gh/richtefee/napari-spero/branch/main/graph/badge.svg)](https://codecov.io/gh/richtefee/napari-spero)
-[![napari hub](https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/napari-spero)](https://napari-hub.org/plugins/napari-spero)
-
 A reader for hyperspectal images collected with Spero QCL microscope by DRS Daylight
 
 ----------------------------------
