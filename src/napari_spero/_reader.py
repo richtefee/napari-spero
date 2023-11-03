@@ -90,6 +90,7 @@ def reader_function(path):
         for spero_file in spero_file_set:
             matlab_dict = loadmat(spero_file)
             image_data = matlab_dict.pop('r').reshape((480, 480, -1)).transpose(2, 1, 0)
+            image_data = np.power(10, -image_data)
 
             # Define layer kwargs
             # find translation form stage
