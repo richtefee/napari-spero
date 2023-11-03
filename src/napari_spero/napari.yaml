@@ -14,5 +14,5 @@ contributions:
       title: Make example QWidget
   readers:
     - command: napari-spero.get_reader
-      accepts_directories: false
-      filename_patterns: ['*.npy']
+      accepts_directories: true
+      filename_patterns: ['*.mat']
