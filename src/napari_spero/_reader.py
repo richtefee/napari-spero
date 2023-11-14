@@ -81,7 +81,7 @@ def reader_function(path):
                                  if file.endswith(spero_file_extensions)]]
         else:
             spero_file_sets += [[_path]]
-
+    
     # load all files into arrays
     napari_layers = []
     for spero_file_set in spero_file_sets:
@@ -106,17 +106,31 @@ def reader_function(path):
             # maybe there is a smarter way by comparing
             # stage positions then multiple files are loaded
             scale = (wavenumbers[1]-wavenumbers[0], 2025/480, 2025/480)
+            
+            # min max as contrast_limit
+            contrast_limits = (np.min(image_data), np.max(image_data))
 
             # Assamble layer parameter
             # Add all but image data as metadata, removed by pop
-            layer_params = {'scale': scale, 'translate': stage_data, 'metadata': matlab_dict}
+            layer_params = {'scale': scale,
+                            'translate': stage_data,
+                            'contrast_limits': contrast_limits,
+                            'metadata': matlab_dict}
 
             # Define layer type
             layer_type = "image"
 
             # Assamble napari layers
             napari_layers += [(image_data, layer_params, layer_type)]
+            
+    # apply global contrast limits
+    contrast_limits_global = (min(napari_layers, key=lambda item: item[1]['contrast_limits'][0])[1]['contrast_limits'][0],
+                              max(napari_layers, key=lambda item: item[1]['contrast_limits'][1])[1]['contrast_limits'][1])
+       
 
+    for nl in napari_layers:
+        nl[1]['contrast_limits'] = contrast_limits_global
+    
     return napari_layers
 
 
