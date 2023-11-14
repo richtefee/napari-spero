@@ -127,7 +127,8 @@ def reader_function(path):
     # apply global contrast limits
     contrast_limits_global = (min(napari_layers, key=lambda item: item[1]['contrast_limits'][0])[1]['contrast_limits'][0],
                               max(napari_layers, key=lambda item: item[1]['contrast_limits'][1])[1]['contrast_limits'][1])
-       
+                           
+    contrast_limits_global = tuple(contrast_limits_global + np.diff(contrast_limits_global) *[-0.15, 0.15])
 
     for nl in napari_layers:
         nl[1]['contrast_limits'] = contrast_limits_global
